@@ -1,4 +1,4 @@
 #!/bin/sh
 # Остановка контейнера и удаление диска
-docker container stop jupyter-scipy
-docker image rm jupyter-docker-scipy
+docker container stop jupyter-spark
+docker container rm --force jupyter-spark
