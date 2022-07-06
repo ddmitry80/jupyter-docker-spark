@@ -2,7 +2,7 @@
 # manual https://jupyter-docker-stacks.readthedocs.io/en/latest/
 # based on https://github.com/jupyter/docker-stacks/tree/master/pyspark-notebook
 # based on https://github.com/jupyter/docker-stacks/blob/master/scipy-notebook/Dockerfile
-ARG BASE_CONTAINER=jupyter/pyspark-notebook:aarch64-spark-3.3.0
+ARG BASE_CONTAINER=jupyter/pyspark-notebook:spark-3.3.0
 FROM $BASE_CONTAINER
 
 LABEL maintainer="Dmitry Dementiev <ddmitry@gmail.com>"
@@ -18,12 +18,12 @@ RUN apt-get update && \
     rm -rf /var/lib/apt/lists/*
 
 # Install Python 3 packages
-RUN conda install -c conda-forge --quiet --yes \
+RUN mamba install -c conda-forge --quiet --yes \
     jupyterlab-git \
     python-snappy \
     # jupyter_conda \
     mamba_gator \
-    mamba \
+    # mamba \
     && \
     conda clean --all -f -y 
 
@@ -33,29 +33,29 @@ RUN conda install -c conda-forge --quiet --yes \
 #     && \
 #     conda clean --all -f -y 
 
-# Install Python 3 packages
+# Install Python 3 packages[[[]]]
 # RUN conda install -c conda-forge --yes \
 #     #jupyter_conda \
 #     && \
 #     conda clean --all -f -y 
 
 # Install Python 3 packages
-# RUN conda install -c conda-forge --quiet --yes \
-#     # catboost \
-#     xgboost \
-#     lightgbm \
-#     && \
-#     conda clean --all -f -y 
+RUN mamba install -c conda-forge --quiet --yes \
+    catboost \
+    xgboost \
+    lightgbm \
+    && \
+    conda clean --all -f -y 
 
 # Install Python 3 packages
 RUN mamba install -c conda-forge --quiet --yes \
     psycopg2 \
     # pymysql \
     plotly \
-    # hyperopt \
-    # shap \
-    # graphviz \
-    # kaggle \
+    hyperopt \
+    shap \
+    graphviz \
+    kaggle \
     pyarrow \
     # fastparquet \
     # lxml \

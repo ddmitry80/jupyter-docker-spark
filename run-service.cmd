@@ -8,4 +8,4 @@ docker run -d --name=jupyter-spark ^
 -v jupyter-conda-envs:/home/jovyan/conda-envs ^
 -v jupyter-conda-sources:/home/jovyan/work/volume-sources ^
 --mount source=%cd%/ssh-keys,target=/home/jovyan/.ssh,type=bind ^
-jupyter-docker-scipy start.sh jupyter lab --NotebookApp.password='sha1:eadc47330625:65d799b65d21048a4f96c12d862514466324f0e3'
+jupyter-docker-spark start.sh jupyter lab --NotebookApp.password='sha1:eadc47330625:65d799b65d21048a4f96c12d862514466324f0e3'
